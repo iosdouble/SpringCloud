@@ -1,0 +1,46 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.nihui.springboot.health.UserEndpoint",
+      "name": "management.endpoint.user",
+      "type": "com.nihui.springboot.health.UserEndpoint"
+    },
+    {
+      "sourceType": "com.nihui.springboot.config.MyConfig",
+      "name": "nihui",
+      "type": "com.nihui.springboot.config.MyConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.nihui.springboot.health.UserEndpoint",
+      "defaultValue": "0ms",
+      "name": "management.endpoint.user.cache.time-to-live",
+      "description": "Maximum time that a response can be cached.",
+      "type": "java.time.Duration"
+    },
+    {
+      "sourceType": "com.nihui.springboot.health.UserEndpoint",
+      "defaultValue": true,
+      "name": "management.endpoint.user.enabled",
+      "description": "Whether to enable the user endpoint.",
+      "type": "java.lang.Boolean"
+    },
+    {
+      "sourceType": "com.nihui.springboot.config.MyConfig",
+      "name": "nihui.hello",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.nihui.springboot.config.MyConfig",
+      "name": "nihui.name",
+      "type": "java.lang.String"
+    },
+    {
+      "sourceType": "com.nihui.springboot.config.MyConfig",
+      "name": "nihui.port",
+      "type": "java.lang.Integer"
+    }
+  ]
+}
