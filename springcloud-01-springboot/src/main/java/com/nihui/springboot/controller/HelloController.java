@@ -1,6 +1,7 @@
 package com.nihui.springboot.controller;
 
 import com.nihui.springboot.config.MyConfig;
+import com.nihui.springboot.service.LogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -19,6 +20,9 @@ public class HelloController {
     @Autowired
     Environment environment;
 
+    @Autowired
+    private LogService logService;
+
     @Value("${nihui.hello}")
     String sayHello;
 
@@ -29,5 +33,11 @@ public class HelloController {
     public String hello(){
         String port = environment.getProperty("nihui.port");
         return "Hello World! "+ port+"   "+ sayHello+"    "+myConfig.getName() ;
+    }
+
+    @GetMapping("/async")
+    public String async() {
+        logService.saveLog();
+        return "success";
     }
 }

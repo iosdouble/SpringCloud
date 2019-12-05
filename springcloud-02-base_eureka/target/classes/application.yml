@@ -1,0 +1,94 @@
+server: 
+  port: 8082
+
+spring: 
+  application: 
+    name:  eureka-server
+
+
+eureka: 
+  server:
+    # 是否允许开启自我保护模式，缺省：true
+    # 当Eureka服务器在短时间内丢失过多客户端时，自我保护模式可使服务端不再删除失去连接的客户端
+    enableSelfPreservation: false
+    # Eureka服务器清理无效节点的时间间隔，单位：毫秒，缺省：60000，即60秒
+    evictionIntervalTimerInMs: 5000
+    # Peer节点更新间隔，单位：毫秒
+    peer-eureka-nodes-update-interval-ms: 10
+  instance:
+    preferIpAddress: true
+    # 服务续约（心跳）频率，单位：秒，缺省30
+    leaseRenewalIntervalInSeconds: 10
+    # 服务失效时间，失效的服务将被剔除。单位：秒，默认：90
+    leaseExpirationDurationInSeconds: 30
+    # 健康检查页面的URL，相对路径，默认使用 HTTP 访问，如需使用 HTTPS则要使用绝对路径配置，缺省：/health
+    healthCheckUrlPath: ${management.endpoints.web.basePath}/health
+    # 状态页面的URL，相对路径，默认使用 HTTP 访问，如需使用 HTTPS则要使用绝对路径配置，缺省：/info
+    statusPageUrlPath: ${management.endpoints.web.basePath}/info
+    metadataMap: 
+      cluster: MIDDLEWARE 
+      management.context-path: ${management.endpoints.web.basePath}
+
+  client:
+    enabled: true
+
+    eurekaServiceUrlPollIntervalSeconds: 300
+    # 从Eureka客户端到所有Eureka服务端的连接总数，缺省：200
+    eurekaServerTotalConnections: 30
+    # 从Eureka客户端到每个Eureka服务主机的连接总数，缺省：50
+    eurekaServerTotalConnectionsPerHost: 10
+    # 是否从Eureka获取注册信息，缺省：true
+    # 一般情况下，Eureka服务端是不需要的
+    fetchRegistry: true
+    # 是否向注册中心注册自己，缺省：true
+    # 一般情况下，Eureka服务端是不需要再注册自己的
+    registerWithEureka: true  
+    availabilityZones:
+      defaultRegion: defaultZone   
+    region: defaultRegion
+    # 是否启用客户端健康检查
+    healthcheck:
+      enabled: true
+    # Eureka服务器的地址，类型为HashMap，缺省的Key为 defaultZone；缺省的Value为 http://localhost:8761/eureka
+    # 如果服务注册中心为高可用集群时，多个注册中心地址以逗号分隔。
+    serviceUrl: 
+#      defaultZone: http://10.115.3.1:8080/eureka/,http://10.115.3.2:8080/eureka/
+      defaultZone: http://127.0.0.1:8082/eureka/
+    # 客户端拉取服务注册信息间隔，单位：秒，缺省：30
+    registry-fetch-interval-seconds: 30
+
+management: 
+  server:
+    port: 8081
+  endpoints: 
+    enabled-by-default: false
+    web: 
+      basePath: /mgmt
+      exposure:
+        include: "*"
+  endpoint:
+    health:
+      enabled: true
+      showDetails: ALWAYS
+    info:
+      enabled: true
+    env:
+      enabled: true
+    logfile:
+      enabled: true
+    loggers:
+      enabled: true
+    mappings:
+      enabled: true
+    beans:
+      enabled: true
+    httptrace:
+      enabled: true
+    threaddump: 
+      enabled: true
+    heapdump:
+      enabled: true
+    metrics:
+      enabled: true
+      
+    

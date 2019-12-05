@@ -18,7 +18,6 @@ import java.util.Map;
 @Component
 @Endpoint(id = "user")
 public class UserEndpoint {
-
     @ReadOperation
     public List<Map<String,Object>> health(){
         List<Map<String,Object>> list = new ArrayList<>();

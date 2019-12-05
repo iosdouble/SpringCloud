@@ -10,6 +10,11 @@
       "sourceType": "com.nihui.springboot.config.MyConfig",
       "name": "nihui",
       "type": "com.nihui.springboot.config.MyConfig"
+    },
+    {
+      "sourceType": "com.nihui.springboot.config.TaskThreadPoolConfig",
+      "name": "spring.task.pool",
+      "type": "com.nihui.springboot.config.TaskThreadPoolConfig"
     }
   ],
   "properties": [
@@ -41,6 +46,36 @@
       "sourceType": "com.nihui.springboot.config.MyConfig",
       "name": "nihui.port",
       "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.nihui.springboot.config.TaskThreadPoolConfig",
+      "defaultValue": 5,
+      "name": "spring.task.pool.core-pool-size",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.nihui.springboot.config.TaskThreadPoolConfig",
+      "defaultValue": 60,
+      "name": "spring.task.pool.keep-alive-seconds",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.nihui.springboot.config.TaskThreadPoolConfig",
+      "defaultValue": 50,
+      "name": "spring.task.pool.max-pool-size",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.nihui.springboot.config.TaskThreadPoolConfig",
+      "defaultValue": 1000,
+      "name": "spring.task.pool.queue-capacity",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "com.nihui.springboot.config.TaskThreadPoolConfig",
+      "defaultValue": "NH-AsyncTask-",
+      "name": "spring.task.pool.thread-name-prefix",
+      "type": "java.lang.String"
     }
   ]
 }

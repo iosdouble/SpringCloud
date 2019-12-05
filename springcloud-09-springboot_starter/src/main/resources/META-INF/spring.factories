@@ -1,0 +1,2 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.nihui.springboot.starter.config.UserAutoConfigure
